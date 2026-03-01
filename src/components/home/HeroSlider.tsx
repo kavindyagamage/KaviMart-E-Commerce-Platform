@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import {
     Carousel,
     CarouselContent,
@@ -16,19 +17,22 @@ const slides = [
         image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=2600&auto=format&fit=crop",
         title: "Summer Collection",
         subtitle: "Discover the latest trends in fashion for a vibrant new look.",
-        cta: "Shop Women"
+        cta: "Shop Women",
+        link: "/category/women"
     },
     {
         image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=2600&auto=format&fit=crop",
         title: "Urban Menswear",
         subtitle: "Premium comfort meets sharp street-style. Upgrade your wardrobe today.",
-        cta: "Shop Men"
+        cta: "Shop Men",
+        link: "/category/men"
     },
     {
         image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=2600&auto=format&fit=crop",
         title: "Kids Special",
         subtitle: "Playful, durable, and stylish outfits for the little ones.",
-        cta: "Shop Kids"
+        cta: "Shop Kids",
+        link: "/category/kids"
     }
 ]
 
@@ -62,10 +66,13 @@ export function HeroSlider() {
                                         {slide.subtitle}
                                     </p>
                                     <Button
+                                        asChild
                                         size="lg"
                                         className="bg-white text-[#0F172A] hover:bg-violet-600 hover:text-white transition-colors text-base lg:text-lg font-semibold px-6 py-5 lg:px-8 lg:py-6 rounded-none uppercase tracking-wide"
                                     >
-                                        {slide.cta}
+                                        <Link href={slide.link}>
+                                            {slide.cta}
+                                        </Link>
                                     </Button>
                                 </div>
                             </div>
