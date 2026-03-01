@@ -34,13 +34,16 @@ const categories = [
 
 export function CategoryGrid() {
     return (
-        <section className="container mx-auto px-4 py-16">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-[800px] md:h-[600px]">
+        <section className="container mx-auto px-4 py-8 lg:py-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 h-[500px] md:h-[600px]">
                 {categories.map((category) => (
                     <Link
                         key={category.id}
                         href={category.link}
-                        className={`relative group overflow-hidden ${category.span}`}
+                        className={`relative group overflow-hidden ${category.id === 1 ? 'col-span-2 row-span-2' :
+                                category.id === 2 ? 'col-span-2 md:col-span-2 row-span-1' :
+                                    'col-span-1 md:col-span-1 row-span-1'
+                            }`}
                     >
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500 z-10" />
                         <Image
@@ -50,8 +53,8 @@ export function CategoryGrid() {
                             className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                         />
                         <div className="absolute inset-0 z-20 flex items-center justify-center">
-                            <div className="bg-white/95 backdrop-blur-sm px-8 py-4 transition-transform duration-500 group-hover:-translate-y-2">
-                                <h3 className="text-lg md:text-xl font-bold text-[#0F172A] tracking-wide uppercase">
+                            <div className="bg-white/95 backdrop-blur-sm px-4 py-3 md:px-8 md:py-4 transition-transform duration-500 group-hover:-translate-y-1 lg:group-hover:-translate-y-2">
+                                <h3 className="text-sm md:text-lg lg:text-xl font-bold text-[#0F172A] tracking-wide uppercase text-center">
                                     {category.title}
                                 </h3>
                             </div>

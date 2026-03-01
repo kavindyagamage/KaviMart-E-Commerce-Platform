@@ -25,15 +25,16 @@ export function ProductCard({ product }: { product: Product }) {
 
                 {/* Badge */}
                 {product.badge && (
-                    <div className={`absolute top-4 left-4 text-xs font-bold px-3 py-1 uppercase tracking-wider text-white rounded-sm ${product.badge === 'Sale' ? 'bg-red-600' : 'bg-violet-600'}`}>
+                    <div className={`absolute top-2 left-2 md:top-4 md:left-4 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 uppercase tracking-wider text-white rounded-sm ${product.badge === 'Sale' ? 'bg-red-600' : 'bg-violet-600'}`}>
                         {product.badge}
                     </div>
                 )}
 
                 {/* Hover Actions */}
-                <div className="absolute inset-x-0 bottom-0 p-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex gap-2">
+                <div className="absolute inset-x-0 bottom-0 p-2 md:p-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex gap-1 md:gap-2">
                     <Button
-                        className="flex-1 bg-white text-[#0F172A] hover:bg-[#0F172A] hover:text-white transition-colors"
+                        size="sm"
+                        className="flex-1 bg-white text-[#0F172A] hover:bg-[#0F172A] hover:text-white transition-colors h-8 md:h-10 text-xs md:text-sm"
                         onClick={(e) => {
                             e.preventDefault();
                             addToCart({
@@ -43,12 +44,12 @@ export function ProductCard({ product }: { product: Product }) {
                             });
                         }}
                     >
-                        <ShoppingCart className="w-4 h-4 mr-2" />
-                        Add to Cart
+                        <ShoppingCart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                        <span className="hidden sm:inline">Add</span>
                     </Button>
                     <Button
                         size="icon"
-                        className="bg-white text-[#0F172A] hover:bg-violet-600 hover:text-white shrink-0"
+                        className="bg-white text-[#0F172A] hover:bg-violet-600 hover:text-white shrink-0 h-8 w-8 md:h-10 md:w-10"
                         onClick={(e) => {
                             e.preventDefault();
                             setQuickViewProduct(product);
@@ -60,18 +61,18 @@ export function ProductCard({ product }: { product: Product }) {
             </div>
 
             {/* Product Details */}
-            <div className="p-4 text-center">
+            <div className="p-3 md:p-4 text-center">
                 <Link href={`/product/${product.id}`}>
-                    <h3 className="text-sm text-gray-700 hover:text-violet-600 transition-colors line-clamp-2 md:line-clamp-1 mb-2">
+                    <h3 className="text-xs md:text-sm text-gray-700 hover:text-violet-600 transition-colors line-clamp-2 md:line-clamp-1 mb-1 md:mb-2">
                         {product.name}
                     </h3>
                 </Link>
-                <div className="flex items-center justify-center gap-3">
-                    <span className="text-lg font-bold text-[#0F172A]">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
+                    <span className="text-sm md:text-lg font-bold text-[#0F172A]">
                         LKR {product.price.toLocaleString()}
                     </span>
                     {product.originalPrice && (
-                        <span className="text-sm text-gray-400 line-through">
+                        <span className="text-[10px] md:text-sm text-gray-400 line-through">
                             LKR {product.originalPrice.toLocaleString()}
                         </span>
                     )}

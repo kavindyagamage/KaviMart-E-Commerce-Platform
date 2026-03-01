@@ -45,7 +45,7 @@ export function HeroSlider() {
                 <CarouselContent>
                     {slides.map((slide, index) => (
                         <CarouselItem key={index}>
-                            <div className="relative w-full h-[600px] lg:h-[700px]">
+                            <div className="relative w-full h-[500px] lg:h-[700px]">
                                 <div className="absolute inset-0 bg-black/40 z-10" />
                                 <Image
                                     src={slide.image}
@@ -55,15 +55,15 @@ export function HeroSlider() {
                                     priority={index === 0}
                                 />
                                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white p-6">
-                                    <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight drop-shadow-lg">
+                                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-tight drop-shadow-lg">
                                         {slide.title}
                                     </h1>
-                                    <p className="text-lg md:text-xl mb-8 max-w-2xl drop-shadow-md">
+                                    <p className="text-base md:text-lg lg:text-xl mb-6 lg:mb-8 max-w-2xl drop-shadow-md px-4">
                                         {slide.subtitle}
                                     </p>
                                     <Button
                                         size="lg"
-                                        className="bg-white text-[#0F172A] hover:bg-violet-600 hover:text-white transition-colors text-lg font-semibold px-8 py-6 rounded-none uppercase tracking-wide"
+                                        className="bg-white text-[#0F172A] hover:bg-violet-600 hover:text-white transition-colors text-base lg:text-lg font-semibold px-6 py-5 lg:px-8 lg:py-6 rounded-none uppercase tracking-wide"
                                     >
                                         {slide.cta}
                                     </Button>

@@ -1,8 +1,9 @@
 "use client"
 
 import Link from "next/link";
-import { Search, User, Heart, Menu } from "lucide-react";
 import { MegaMenu } from "./MegaMenu";
+import { MobileMenu } from "./MobileMenu";
+import { Search, User, Heart } from "lucide-react";
 import { CartSheet } from "../cart/CartSheet";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -24,9 +25,7 @@ export function Header() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
         {/* Mobile Menu & Logo */}
         <div className="flex items-center gap-4 lg:w-1/4">
-          <button className="lg:hidden p-2 hover:bg-white/10 rounded-md">
-            <Menu className="h-6 w-6" />
-          </button>
+          <MobileMenu />
           <Link href="/" className="flex items-center gap-1 select-none">
             {/* Icon mark */}
             <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 flex items-center justify-center text-white font-black text-sm shadow-md shadow-violet-900/40">K</span>

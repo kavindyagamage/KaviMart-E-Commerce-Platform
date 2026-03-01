@@ -47,13 +47,13 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     }
 
     return (
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Images Gallery */}
-            <div className="flex flex-col gap-4">
-                <div className="relative aspect-[3/4] bg-gray-100 w-full overflow-hidden">
+            <div className="flex flex-col gap-2 md:gap-4">
+                <div className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-gray-100 w-full overflow-hidden">
                     <Image src={product.image} alt={product.name} fill className="object-cover" priority />
                 </div>
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-4 gap-2 md:gap-4">
                     {[1, 2, 3, 4].map(idx => (
                         <div key={idx} className="relative aspect-square bg-gray-200 cursor-pointer overflow-hidden opacity-80 hover:opacity-100 transition-opacity">
                             <Image src={product.image} alt={`${product.name} Thumbnail ${idx}`} fill className="object-cover" />
@@ -64,24 +64,24 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
             {/* Product Info */}
             <div className="flex flex-col">
-                <div className="mb-8 border-b pb-8">
-                    <h1 className="text-3xl md:text-5xl font-bold text-[#0F172A] mb-4 tracking-tight">
+                <div className="mb-6 lg:mb-8 border-b pb-6 lg:pb-8">
+                    <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-[#0F172A] mb-3 lg:mb-4 tracking-tight">
                         {product.name}
                     </h1>
-                    <div className="flex items-center gap-4 mb-6 text-sm text-gray-500">
+                    <div className="flex flex-wrap items-center gap-2 lg:gap-4 mb-4 lg:mb-6 text-xs lg:text-sm text-gray-500">
                         <div className="flex items-center text-yellow-400">
-                            {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+                            {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 lg:w-4 lg:h-4 fill-current" />)}
                         </div>
                         <span>(128 Reviews)</span>
                         <span className="text-green-600 font-semibold">• In Stock</span>
                     </div>
 
-                    <div className="flex items-baseline gap-4">
-                        <span className="text-4xl font-bold text-[#7C3AED]">
+                    <div className="flex flex-wrap items-baseline gap-2 md:gap-4">
+                        <span className="text-2xl md:text-4xl font-bold text-[#7C3AED]">
                             LKR {product.price.toLocaleString()}
                         </span>
                         {product.originalPrice && (
-                            <span className="text-xl text-gray-400 line-through">
+                            <span className="text-lg md:text-xl text-gray-400 line-through">
                                 LKR {product.originalPrice.toLocaleString()}
                             </span>
                         )}
@@ -138,13 +138,13 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     )}
                 </div>
 
-                <div className="flex gap-4 mb-8">
+                <div className="flex gap-2 lg:gap-4 mb-8 sticky bottom-4 z-40 bg-white/95 backdrop-blur-md p-2 -mx-4 px-4 lg:static lg:bg-transparent lg:p-0 lg:mx-0 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] lg:shadow-none border-t lg:border-t-0 border-gray-100">
                     <Button
                         size="lg"
                         onClick={handleAddToCart}
-                        className="flex-1 bg-[#0F172A] hover:bg-[#7C3AED] text-white h-16 font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3 text-sm"
+                        className="flex-1 bg-[#0F172A] hover:bg-[#7C3AED] text-white h-12 lg:h-16 font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 lg:gap-3 text-xs lg:text-sm"
                     >
-                        <ShoppingBag className="w-5 h-5" />
+                        <ShoppingBag className="w-4 h-4 lg:w-5 lg:h-5" />
                         Add to Cart
                     </Button>
 
@@ -152,13 +152,13 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     <button
                         onClick={handleWishlist}
                         title={wishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
-                        className={`h-16 w-16 flex items-center justify-center border-2 transition-all duration-200 shrink-0
+                        className={`h-12 w-12 lg:h-16 lg:w-16 flex items-center justify-center border-2 transition-all duration-200 shrink-0
                             ${wishlisted
                                 ? 'border-red-400 bg-red-50 text-red-500'
                                 : 'border-gray-200 hover:border-[#7C3AED] hover:text-[#7C3AED]'}
                             ${wishlistAnim ? 'scale-125' : 'scale-100'}`}
                     >
-                        <Heart className={`w-5 h-5 transition-all ${wishlisted ? 'fill-red-500 text-red-500' : ''}`} />
+                        <Heart className={`w-4 h-4 lg:w-5 lg:h-5 transition-all ${wishlisted ? 'fill-red-500 text-red-500' : ''}`} />
                     </button>
 
                     {/* Share Button */}
@@ -166,9 +166,9 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                         <button
                             onClick={handleShare}
                             title="Share this product"
-                            className="h-16 w-16 flex items-center justify-center border-2 border-gray-200 hover:border-[#7C3AED] hover:text-[#7C3AED] transition-colors shrink-0"
+                            className="hidden md:flex h-12 w-12 lg:h-16 lg:w-16 items-center justify-center border-2 border-gray-200 hover:border-[#7C3AED] hover:text-[#7C3AED] transition-colors shrink-0"
                         >
-                            <Share2 className="w-5 h-5" />
+                            <Share2 className="w-4 h-4 lg:w-5 lg:h-5" />
                         </button>
                         {shareMsg && (
                             <span className="absolute -top-9 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-xs px-3 py-1 rounded-full whitespace-nowrap shadow">

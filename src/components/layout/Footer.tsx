@@ -3,9 +3,9 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="bg-[#0F172A] text-white pt-16 pb-8">
+        <footer className="bg-[#0F172A] text-white pt-12 md:pt-16 pb-8">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12">
                     {/* Brand & Socials */}
                     <div className="space-y-6">
                         {/* Logo */}
