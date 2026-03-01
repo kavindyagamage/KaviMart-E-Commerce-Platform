@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  image     String?   
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  description   String?
+  price         Float
+  originalPrice Float?
+  image         String
+  images        String   @default("[]") // Stored as JSON string of URLs
+  badge         String?
+  sizes         String   @default("[]") // Stored as JSON string array
+  colors        String   @default("[]") // Stored as JSON string array
+  subCategory   String?
+  stock         Int      @default(0)
+  categoryId    String
+  category      Category @relation(fields: [categoryId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  userId        String?     // Optional, for guest checkout
+  status        OrderStatus @default(PENDING)
+  totalAmount   Float
+  stripeSession String?     @unique
+  address       String?
+  city          String?
+  postalCode    String?
+  orderItems    OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id])
+  productId String
+  name      String
+  price     Float
+  quantity  Int
+  size      String?
+  color     String?
+}
+
+// Since SQLite doesn't support enums natively but Prisma fakes it at application level
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
