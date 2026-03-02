@@ -99,16 +99,7 @@ const products: SeedProduct[] = [
     },
 
     // Kids
-    {
-        name: "Kids Cotton T-Shirt",
-        slug: "kids-cotton-t-shirt",
-        price: 1500,
-        image: "https://images.unsplash.com/photo-1519702209724-42f0a0d9e9e1?q=80&w=800&auto=format&fit=crop",
-        badge: "New",
-        sizes: JSON.stringify(["2T", "3T", "4T", "5T"]),
-        categoryName: 'Kids',
-        subCategory: 'topwear'
-    },
+ 
     {
         name: "Denim Kids Overalls",
         slug: "denim-kids-overalls",
